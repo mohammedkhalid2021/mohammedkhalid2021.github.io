@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Khalid — Researcher. Speaker. Consultant.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --dark: #111111;
+    --panel: #161616;
+    --border: #252525;
+    --mid: #888888;
+    --light: #cccccc;
+    --white: #f0ede8;
+    --gold: #c9a84c;
+    --gold-dim: #8a6f2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.7;
+    cursor: default;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    height: 60px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 60px 80px;
+    padding-top: 60px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-tag {
+    position: absolute;
+    top: 100px;
+    right: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+  }
+
+  .hero-tag-item {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+
+  .hero-credential {
+    position: absolute;
+    top: 100px;
+    left: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .hero-credential-item {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--border);
+    text-transform: uppercase;
+  }
+
+  .hero-main {
+    max-width: 900px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(64px, 9vw, 130px);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 40px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-descriptor {
+    display: flex;
+    gap: 0;
+    margin-bottom: 48px;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  .hero-descriptor-item {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    padding-right: 24px;
+    margin-right: 24px;
+    border-right: 1px solid var(--border);
+  }
+
+  .hero-descriptor-item:last-child {
+    border-right: none;
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .hero-lede {
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--light);
+    max-width: 640px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 13px 28px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--white); }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 13px 28px;
+    border: 1px solid var(--border);
+    color: var(--mid);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* SECTIONS SHARED */
+  section { border-bottom: 1px solid var(--border); }
+
+  .section-inner {
+    padding: 100px 60px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 56px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 48px;
+    height: 1px;
+    background: var(--gold-dim);
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 54px);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
+
+  /* ABOUT */
+  #about .section-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .about-left {}
+
+  .about-body p {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--light);
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .about-body strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .about-body a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-dim);
+    transition: border-color 0.2s;
+  }
+
+  .about-body a:hover { border-color: var(--gold); }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .credential-block {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .credential-block:last-child { border-bottom: 1px solid var(--border); }
+
+  .credential-type {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 6px;
+  }
+
+  .credential-value {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--light);
+    line-height: 1.5;
+  }
+
+  /* SPEAKING */
+  #speaking { background: var(--dark); }
+
+  .speaking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 16px;
+  }
+
+  .speaking-intro {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--light);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 560px;
+  }
+
+  .engagements {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .engagement {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--border);
+    align-items: start;
+  }
+
+  .engagement:last-child { border-bottom: 1px solid var(--border); }
+
+  .engagement-year {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--gold-dim);
+    letter-spacing: 0.05em;
+    padding-top: 2px;
+  }
+
+  .engagement-detail {}
+
+  .engagement-org {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .engagement-title {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.4;
+  }
+
+  .speaking-topics {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .topic-item {
+    padding: 28px 32px;
+    border: 1px solid var(--border);
+    margin-bottom: -1px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .topic-item:hover {
+    background: var(--panel);
+    border-color: var(--gold-dim);
+    z-index: 1;
+    position: relative;
+  }
+
+  .topic-label {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 8px;
+  }
+
+  .topic-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .topic-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  /* SERVICES */
+  #services {}
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    margin-top: 16px;
+  }
+
+  .service-card {
+    padding: 48px 40px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .service-card:nth-child(2n) { border-right: none; }
+  .service-card:nth-child(3), .service-card:nth-child(4) { border-bottom: none; }
+
+  .service-card:hover { background: var(--panel); }
+
+  .service-icon {
+    font-size: 28px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .service-rate {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+
+  /* RESEARCH */
+  #research { background: var(--dark); }
+
+  .research-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 16px;
+  }
+
+  .research-item {
+    padding: 36px 0;
+    border-top: 1px solid var(--border);
+    padding-right: 60px;
+  }
+
+  .research-item:nth-child(even) {
+    padding-right: 0;
+    padding-left: 60px;
+    border-left: 1px solid var(--border);
+  }
+
+  .research-item:last-child,
+  .research-item:nth-last-child(2) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .research-type {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 10px;
+  }
+
+  .research-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .research-venue {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--mid);
+  }
+
+  /* CONTACT */
+  #contact {}
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 16px;
+  }
+
+  .contact-body {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--light);
+    line-height: 1.8;
+    margin-bottom: 40px;
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-item-label {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 4px;
+  }
+
+  .contact-item-value {
+    font-size: 15px;
+    color: var(--light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item-value:hover { color: var(--gold); }
+
+  .contact-note {
+    padding: 40px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+  }
+
+  .contact-note-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+
+  .contact-note-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.75;
+  }
+
+  .contact-note-body ul {
+    margin-top: 14px;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .press-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    padding: 14px 20px;
+    border: 1px solid var(--border);
+    color: var(--mid);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .press-link:hover {
+    border-color: var(--gold-dim);
+    color: var(--gold);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--mid);
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: var(--border);
+    letter-spacing: 0.08em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-tag, .hero-credential { display: none; }
+    .section-inner { padding: 64px 24px; }
+    #about .section-inner { grid-template-columns: 1fr; gap: 48px; }
+    .speaking-grid { grid-template-columns: 1fr; gap: 48px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { border-right: none; border-bottom: 1px solid var(--border); }
+    .service-card:last-child { border-bottom: none; }
+    .research-grid { grid-template-columns: 1fr; }
+    .research-item:nth-child(even) { padding-left: 0; border-left: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-name">Mohammed Khalid</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#speaking">Speaking</a></li>
+    <li><a href="#services">Work With Me</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-credential">
+    <div class="hero-credential-item">M.S. Security Informatics</div>
+    <div class="hero-credential-item">Johns Hopkins University</div>
+    <div class="hero-credential-item">Oxford University Press</div>
+    <div class="hero-credential-item">CompTIA Security+</div>
+  </div>
+
+  <div class="hero-tag">
+    <div class="hero-tag-item">FBI · DOD · NYPD</div>
+    <div class="hero-tag-item">Yale · Georgetown · Heritage</div>
+    <div class="hero-tag-item">TEDxJHU</div>
+  </div>
+
+  <div class="hero-main">
+    <div class="hero-eyebrow">Researcher · Speaker · Consultant</div>
+    <h1 class="hero-name">Mohammed<br><em>Khalid</em></h1>
+    <div class="hero-descriptor">
+      <div class="hero-descriptor-item">Counter-Extremism</div>
+      <div class="hero-descriptor-item">Cybersecurity</div>
+      <div class="hero-descriptor-item">Trust & Safety</div>
+      <div class="hero-descriptor-item">Online Radicalization</div>
+    </div>
+    <p class="hero-lede">Security informatics researcher and nationally recognized counter-extremism expert whose work has been cited by federal law enforcement agencies, published by Oxford University Press, and featured in The Washington Post.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Consultation</a>
+      <a href="#speaking" class="btn-secondary">Speaking Inquiries</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-left">
+      <div class="section-label">About</div>
+      <h2 class="section-heading">Bridging lived<br>experience and<br>rigorous research.</h2>
+      <div class="about-body">
+        <p>Mohammed Khalid holds a <strong>Master of Science in Security Informatics from Johns Hopkins University</strong> (GPA: 4.0) and a Bachelor of Science in Information Systems from the University of Maryland, Baltimore County (Magna Cum Laude). His graduate research focused on ransomware risk modeling and the forecasting of cyber threats, culminating in a first-of-its-kind machine learning study on ransomware valuation.</p>
+        <p>His counter-extremism work spans research, policy, and public engagement. He co-authored a chapter in <strong>Oxford University Press's <em>Terrorism, Violent Radicalisation, and Mental Health</em></strong> (2021) and has presented research on online radicalization, extremist digital communications, and deradicalization at institutions including the FBI Behavioral Analysis Unit, the U.S. Department of Defense, the New York City Police Department, Yale University, Georgetown University, and the Washington Institute for Near East Policy.</p>
+        <p>His professional cybersecurity experience includes privacy risk consulting at <strong>Ernst & Young</strong> across global clients, FISMA compliance auditing for federal health sector contractors at <strong>Guidehouse</strong>, and applied research at the Johns Hopkins Information Security Institute and Georgia State University's Evidence-Based Cybersecurity Research Group.</p>
+        <p>His story — one of the youngest people charged with terrorism in U.S. history, and his subsequent deradicalization — was the subject of a <a href="https://www.washingtonpost.com/magazine/2021/02/08/redemption-of-mohammed-khalid/" target="_blank" rel="noopener">feature profile in <em>The Washington Post</em></a>. That lived experience, combined with formal academic training, gives him a perspective on radicalization and extremism that is uniquely credible across both practitioner and academic audiences.</p>
+      </div>
+
+      <a href="https://www.washingtonpost.com/magazine/2021/02/08/redemption-of-mohammed-khalid/" target="_blank" rel="noopener" class="press-link">
+        ↗ As featured in The Washington Post
+      </a>
+    </div>
+
+    <div class="about-right">
+      <div class="credential-block">
+        <div class="credential-type">Education</div>
+        <div class="credential-value">M.S. Security Informatics, Johns Hopkins University — GPA 4.0 · 2022</div>
+      </div>
+      <div class="credential-block">
+        <div class="credential-type">Education</div>
+        <div class="credential-value">B.S. Information Systems, UMBC — Magna Cum Laude · 2021</div>
+      </div>
+      <div class="credential-block">
+        <div class="credential-type">Publication</div>
+        <div class="credential-value">Oxford University Press — Terrorism, Violent Radicalisation, and Mental Health · 2021</div>
+      </div>
+      <div class="credential-block">
+        <div class="credential-type">Certifications</div>
+        <div class="credential-value">CompTIA Security+ · Cisco CCNA · CyberOps Associate · CSX Cybersecurity Fundamentals</div>
+      </div>
+      <div class="credential-block">
+        <div class="credential-type">Fellowships & Awards</div>
+        <div class="credential-value">Cognizant Trust & Safety Scholar ($20,000) · BMO Lime Connect Scholar ($10,000) · JHU Information Security Institute Fellow · Carnegie Mellon SSI Fellow</div>
+      </div>
+      <div class="credential-block">
+        <div class="credential-type">Memberships</div>
+        <div class="credential-value">Phi Beta Kappa · Association for Computing Machinery</div>
+      </div>
+      <div class="credential-block">
+        <div class="credential-type">Press</div>
+        <div class="credential-value">The Washington Post Magazine · 2021</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKING -->
+<section id="speaking">
+  <div class="section-inner">
+    <div class="section-label">Speaking</div>
+    <h2 class="section-heading">Selected engagements<br>& topic areas.</h2>
+
+    <div class="speaking-grid">
+      <div>
+        <p class="speaking-intro">Mohammed has delivered keynotes, panels, and guest lectures at federal agencies, universities, think tanks, and conferences on the psychology of radicalization, online extremism, deradicalization, and the intersection of cybersecurity and national security.</p>
+
+        <div class="engagements">
+          <div class="engagement">
+            <div class="engagement-year">2021</div>
+            <div class="engagement-detail">
+              <div class="engagement-org">FBI Behavioral Analysis Unit</div>
+              <div class="engagement-title">Symposium on Radicalization, Deradicalization, and Disengagement</div>
+            </div>
+          </div>
+          <div class="engagement">
+            <div class="engagement-year">2021</div>
+            <div class="engagement-detail">
+              <div class="engagement-org">U.S. Department of Defense — PERSEREC</div>
+              <div class="engagement-title">Workshop on Domestic Extremism — 6× Panelist</div>
+            </div>
+          </div>
+          <div class="engagement">
+            <div class="engagement-year">2021</div>
+            <div class="engagement-detail">
+              <div class="engagement-org">NYPD 5th Annual Cyber Intelligence & Counterterrorism Conference</div>
+              <div class="engagement-title">Virtual is Reality: Digital Drivers of Real-World Harm</div>
+            </div>
+          </div>
+          <div class="engagement">
+            <div class="engagement-year">2021</div>
+            <div class="engagement-detail">
+              <div class="engagement-org">Yale University — Jackson Institute for Global Affairs</div>
+              <div class="engagement-title">Journeying In and Out of Extremism</div>
+            </div>
+          </div>
+          <div class="engagement">
+            <div class="engagement-year">2021</div>
+            <div class="engagement-detail">
+              <div class="engagement-org">Georgetown University</div>
+              <div class="engagement-title">Race, Religion, and Terrorism — IR 557</div>
+            </div>
+          </div>
+          <div class="engagement">
+            <div class="engagement-year">2020</div>
+            <div class="engagement-detail">
+              <div class="engagement-org">Washington Institute for Near East Policy</div>
+              <div class="engagement-title">Roundtable Discussion (Chatham House Rule)</div>
+            </div>
+          </div>
+          <div class="engagement">
+            <div class="engagement-year">2020</div>
+            <div class="engagement-detail">
+              <div class="engagement-org">New America & Arizona State University</div>
+              <div class="engagement-title">Future Security Forum — Deradicalization: Lessons from the Field</div>
+            </div>
+          </div>
+          <div class="engagement">
+            <div class="engagement-year">2019</div>
+            <div class="engagement-detail">
+              <div class="engagement-org">TEDxJHU — Johns Hopkins University</div>
+              <div class="engagement-title">Reconciling Humanity: Struggles of a Former Teenage Terrorist</div>
+            </div>
+          </div>
+          <div class="engagement">
+            <div class="engagement-year">2018</div>
+            <div class="engagement-detail">
+              <div class="engagement-org">The Heritage Foundation</div>
+              <div class="engagement-title">Pathways In and Out of Islamism</div>
+            </div>
+          </div>
+          <div class="engagement">
+            <div class="engagement-year">2018</div>
+            <div class="engagement-detail">
+              <div class="engagement-org">Yale University — Maurice R. Greenberg World Fellows Program</div>
+              <div class="engagement-title">Deradicalization in the United States</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="speaking-topics">
+        <div class="topic-item">
+          <div class="topic-label">Topic Area 01</div>
+          <div class="topic-title">The Psychology of Online Radicalization</div>
+          <div class="topic-desc">How extremist networks exploit isolation, identity, and grievance — and what institutions consistently misunderstand about the process.</div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-label">Topic Area 02</div>
+          <div class="topic-title">Deradicalization: What Actually Works</div>
+          <div class="topic-desc">Examining evidence-based disengagement programs globally, with first-person perspective on what intervention looks like from the inside.</div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-label">Topic Area 03</div>
+          <div class="topic-title">Platforms, Pipelines & Extremist Exploitation</div>
+          <div class="topic-desc">How social media and communication platforms are weaponized for radicalization — and what Trust & Safety teams get wrong in response.</div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-label">Topic Area 04</div>
+          <div class="topic-title">Far-Right, Islamist & Cross-Ideological Extremism</div>
+          <div class="topic-desc">Comparative analysis of recruitment tactics, online infrastructure, and radicalization pathways across ideological movements.</div>
+        </div>
+        <div class="topic-item">
+          <div class="topic-label">Topic Area 05</div>
+          <div class="topic-title">Cybersecurity & National Security Intersections</div>
+          <div class="topic-desc">The convergence of cyber threats and violent extremism — ransomware, state-sponsored actors, and the digital infrastructure of terrorism.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">Work With Me</div>
+    <h2 class="section-heading">Four ways to engage.</h2>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🎤</span>
+        <div class="service-title">Keynotes & Speaking</div>
+        <p class="service-desc">Available for keynotes, panel discussions, guest lectures, and workshops at universities, corporations, government agencies, conferences, and think tanks. Topics span radicalization, deradicalization, online extremism, Trust & Safety, and cybersecurity.</p>
+        <div class="service-rate">Inquire for availability & fees</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔍</span>
+        <div class="service-title">Trust & Safety Consulting</div>
+        <p class="service-desc">Advisory consulting for platforms navigating extremist content, radicalization risk, and policy vulnerability. Assessments of how extremist actors exploit platform architecture — and what content moderation and Trust & Safety teams miss.</p>
+        <div class="service-rate">Hourly & retainer engagements</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">⚖️</span>
+        <div class="service-title">Expert Witness</div>
+        <p class="service-desc">Available as an expert witness in federal and state proceedings involving online radicalization, extremist recruitment, digital communications in terrorism cases, and deradicalization. Combines lived experience with peer-reviewed academic research and formal security credentials.</p>
+        <div class="service-rate">Available for defense & prosecution</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">📄</span>
+        <div class="service-title">Research & Reports</div>
+        <p class="service-desc">Commissioned research reports, white papers, and policy briefs for think tanks, NGOs, universities, and government contractors. Topics include online extremism, counter-radicalization program assessment, platform vulnerability, and domestic terrorism trends.</p>
+        <div class="service-rate">Fixed-fee project engagements</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-label">Research & Publications</div>
+    <h2 class="section-heading">Selected works.</h2>
+
+    <div class="research-grid">
+      <div class="research-item">
+        <div class="research-type">Book Chapter · 2021</div>
+        <div class="research-title">Deradicalization and Rehabilitation: A Case Study of the Quilliam Foundation's Decade-Long Approach</div>
+        <div class="research-venue">Oxford University Press — Terrorism, Violent Radicalisation, and Mental Health (Fraser-Rahim & Khalid)</div>
+      </div>
+      <div class="research-item">
+        <div class="research-type">Conference Paper · 2020</div>
+        <div class="research-title">An Unholy Alliance: Christian Identity Extremists and ICTs</div>
+        <div class="research-venue">iConference 2020 — Published & Presented (Duque, Khalid, et al.)</div>
+      </div>
+      <div class="research-item">
+        <div class="research-type">Capstone Research · 2022</div>
+        <div class="research-title">Should We Pay? Assessing Businesses' Worth to Ransomware Attackers</div>
+        <div class="research-venue">Johns Hopkins University Information Security Institute — ML model predicting ransomware demand scale</div>
+      </div>
+      <div class="research-item">
+        <div class="research-type">Undergraduate Research · 2020</div>
+        <div class="research-title">Assessing Potential Indicators of Online Radicalization</div>
+        <div class="research-venue">UMBC McNair Scholars — Presented at 28th Annual McNair Research Conference & ACM SIGKDD 2020</div>
+      </div>
+      <div class="research-item">
+        <div class="research-type">Research Project · 2020</div>
+        <div class="research-title">The Last Will to Murder: The Far-Right's Use of Violence in Manifestos</div>
+        <div class="research-venue">iSchool Inclusion Institute (i3) — University of Pittsburgh</div>
+      </div>
+      <div class="research-item">
+        <div class="research-type">Symposium Publication · 2020</div>
+        <div class="research-title">Mass Media's Ideology of Middle Eastern Terror and the Impossibility of the Individual</div>
+        <div class="research-venue">JHU Richard Macksey National Undergraduate Humanities Research Symposium</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-heading">Speaking, consulting,<br>and research inquiries.</h2>
+
+    <div class="contact-grid">
+      <div>
+        <p class="contact-body">Available for speaking engagements, Trust & Safety consulting, expert witness work, and commissioned research. Response within one business day.</p>
+        <div class="contact-items">
+          <div>
+            <div class="contact-item-label">Email</div>
+            <a href="mailto:info@mohammedkhalid.com" class="contact-item-value">info@mohammedkhalid.com</a>
+          </div>
+          <div>
+            <div class="contact-item-label">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/cybermohammed/" target="_blank" rel="noopener" class="contact-item-value">linkedin.com/in/cybermohammed</a>
+          </div>
+          <div>
+            <div class="contact-item-label">Press</div>
+            <a href="https://www.washingtonpost.com/magazine/2021/02/08/redemption-of-mohammed-khalid/" target="_blank" rel="noopener" class="contact-item-value">The Washington Post — February 2021</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-note">
+        <div class="contact-note-heading">Ideal for organizations that need:</div>
+        <div class="contact-note-body">
+          <ul>
+            <li>A speaker with credible first-person and academic expertise on radicalization</li>
+            <li>A Trust & Safety consultant who understands extremist exploitation from the inside</li>
+            <li>An expert witness combining lived experience with peer-reviewed research and federal cybersecurity credentials</li>
+            <li>A researcher who can produce credible, publishable work on online extremism and counter-terrorism</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Mohammed Khalid</div>
+  <div class="footer-copy">© 2026 Mohammed Khalid. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
